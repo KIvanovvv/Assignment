@@ -1,0 +1,46 @@
+.list {
+  background-color: #0fa3b1;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 15px;
+  overflow: visible;
+}
+
+.btn {
+  font-size: 16px;
+}
+.tag {
+  color: white;
+  font-weight: bold;
+}
+.tag_tasks_light {
+  background-color: green;
+  color: #f7a072;
+  font-size: 12px;
+  padding: 5px;
+}
+.tag_tasks_medium {
+  background-color: yellow;
+  color: #f7a072;
+  font-size: 12px;
+  padding: 5px;
+}
+.tag_tasks_overwhelmed {
+  background-color: red;
+  color: #f7a072;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.action {
+  display: flex;
+  gap: 20px;
+}
+.btn {
+  font-size: 14px;
+}
+.btn:hover {
+  background-color: #f7a072;
+  color: #d9e5d6;
+}
