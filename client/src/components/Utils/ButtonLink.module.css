@@ -1,0 +1,20 @@
+.btn {
+  width: fit-content;
+  padding: 5px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: none;
+  background-color: #d9e5d6;
+  color: #f7a072;
+  text-decoration: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #0fa3b1;
+}
+
+.active {
+  background-color: #0fa3b1;
+}

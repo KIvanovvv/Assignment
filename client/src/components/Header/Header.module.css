@@ -1,8 +1,8 @@
 .wrapper {
-  background-color: red;
-  padding: 10px 20px;
+  background-color: #f7a072;
+  padding: 20px 20px;
   width: 400px;
-
+  border-radius: 20px;
   display: flex;
   justify-content: center;
 }
@@ -10,7 +10,6 @@
 .content {
   display: flex;
   width: 300px;
-  background-color: green;
   justify-content: space-around;
   align-items: center;
 }
