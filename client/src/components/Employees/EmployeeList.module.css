@@ -38,7 +38,7 @@
   gap: 20px;
 }
 .btn {
-  font-size: 14px;
+  align-self: center;
 }
 .btn:hover {
   background-color: #f7a072;

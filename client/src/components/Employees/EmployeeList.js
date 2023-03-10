@@ -1,4 +1,5 @@
 import Button from "../Utils/Button.js";
+import ButtonLink from "../Utils/ButtonLink.js";
 import classes from "./EmployeeList.module.css";
 
 const EmployeeList = ({ employee }) => {
@@ -45,8 +46,10 @@ const EmployeeList = ({ employee }) => {
         </p>
       </div>
       <div className={classes.action}>
-        <Button className={classes.btn}>Edit</Button>
-        <Button className={classes.btn}>Assign Task</Button>
+        <ButtonLink className={classes.btn}>Edit</ButtonLink>
+        <ButtonLink to={`/tasks/${employee._id}`} className={classes.btn}>
+          Tasks
+        </ButtonLink>
       </div>
     </li>
   );

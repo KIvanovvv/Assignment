@@ -4,6 +4,7 @@ import Header from "./components/Header/Header.js";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home.js";
 import Employees from "./components/Employees/Employees.js";
+import Tasks from "./components/Tasks/Tasks.js";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/employees" element={<Employees />} />
-        <Route path="/tasks" element={<p>Tasks</p>} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/tasks/:id" element={<p>Tasks for user</p>} />
         <Route path="*" element={<p>Not Found 404</p>} />
       </Routes>
     </div>
