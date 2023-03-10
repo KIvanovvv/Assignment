@@ -44,3 +44,9 @@
   background-color: #f7a072;
   color: #d9e5d6;
 }
+.tasks_counter {
+  /* padding-top: 5px;
+  font-size: 18px; */
+  font-weight: bold;
+  color: white;
+}

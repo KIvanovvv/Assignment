@@ -6,6 +6,7 @@ import Home from "./components/Home/Home.js";
 import Employees from "./components/Employees/Employees.js";
 import Tasks from "./components/Tasks/Tasks.js";
 import Edit from "./components/Edit/Edit.js";
+import EmployeeTask from "./components/EmployeeTasks/EmployeeTask.js";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/employees" element={<Employees />} />
         <Route path="/tasks" element={<Tasks />} />
-        <Route path="/tasks/:id" element={<p>Tasks for user</p>} />
+        <Route path="/tasks/:userId" element={<EmployeeTask />} />
         <Route path="/edit/:userId" element={<Edit />} />
         <Route path="*" element={<p>Not Found 404</p>} />
       </Routes>

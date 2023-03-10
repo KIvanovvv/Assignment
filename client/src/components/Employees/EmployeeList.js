@@ -4,11 +4,11 @@ import classes from "./EmployeeList.module.css";
 
 const EmployeeList = ({ employee }) => {
   let taskStyle;
-  if (Number(employee.tasks) <= 1) {
+  if (Number(employee.tasks.length) <= 1) {
     taskStyle = classes.tag_tasks_light;
-  } else if (Number(employee.tasks) === 2) {
+  } else if (Number(employee.tasks.length) === 2) {
     taskStyle = classes.tag_tasks_medium;
-  } else if (Number(employee.tasks) >= 3) {
+  } else if (Number(employee.tasks.length) >= 3) {
     taskStyle = classes.tag_tasks_overwhelmed;
   }
   return (
@@ -41,8 +41,9 @@ const EmployeeList = ({ employee }) => {
           {" "}
           <span className={classes.tag}>Salary: </span>${employee.salary}
         </p>
-        <p>
-          Working on {<span className={taskStyle}>{employee.tasks.length}</span>} tasks
+        <p className={classes.tasks_counter}>
+          Working on{" "}
+          {<span className={taskStyle}>{employee.tasks.length}</span>} tasks
         </p>
       </div>
       <div className={classes.action}>
