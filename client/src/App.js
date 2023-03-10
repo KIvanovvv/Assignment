@@ -7,6 +7,7 @@ import Employees from "./components/Employees/Employees.js";
 import Tasks from "./components/Tasks/Tasks.js";
 import Edit from "./components/Edit/Edit.js";
 import EmployeeTask from "./components/EmployeeTasks/EmployeeTask.js";
+import AddEmployee from "./components/AddEmployee/AddEmployee.js";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/employees" element={<Employees />} />
+        <Route path="/employees/add" element={<AddEmployee />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/tasks/:userId" element={<EmployeeTask />} />
         <Route path="/edit/:userId" element={<Edit />} />

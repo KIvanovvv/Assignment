@@ -1,4 +1,4 @@
-import Button from "../Utils/Button.js";
+import ButtonLink from "../Utils/ButtonLink.js";
 import EmployeeList from "./EmployeeList.js";
 import classes from "./Employees.module.css";
 
@@ -85,7 +85,7 @@ const Employees = () => {
           ))}
         </ul>
       </div>
-      <Button>Add Employee</Button>
+      <ButtonLink to={"/employees/add"}>Add Employee</ButtonLink>
     </div>
   );
 };

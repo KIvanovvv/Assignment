@@ -1,0 +1,40 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: grey;
+  opacity: 0.6;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  justify-self: center;
+  background-color: #f7a072;
+  width: 700px;
+  height: 450px;
+  padding: 20px;
+  border-radius: 20px;
+  gap: 20px;
+}
+.headline {
+  background-color: #d9e5d6;
+  padding: 5px 20px;
+  font-size: 20px;
+  border-radius: 20px;
+  color: #f7a072;
+  font-weight: bold;
+  cursor: default;
+}

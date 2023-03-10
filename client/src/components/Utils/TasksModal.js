@@ -1,10 +1,9 @@
 import { useState } from "react";
-import classes from "./TaskDetailsModal.module.css";
+import classes from "./TasksModal.module.css";
 
-const TaskDetailsModal = ({ setModalVisible, taskId }) => {
-  const [employees, setEmployees] = useState([]);
-  console.log(taskId);
-  //Fetch with taskId
+const TasksModal = ({ setModalVisible }) => {
+  const [tasks, setTasks] = useState([]);
+  //Fetch for all tasks
   return (
     <div className={classes.wrapper}>
       <div
@@ -13,7 +12,7 @@ const TaskDetailsModal = ({ setModalVisible, taskId }) => {
       ></div>
       <div className={classes.container}>
         <div className={classes.headline}>
-          <p>Employees working on task</p>
+          <p>Available tasks</p>
           <ul></ul>
         </div>
       </div>
@@ -21,4 +20,4 @@ const TaskDetailsModal = ({ setModalVisible, taskId }) => {
   );
 };
 
-export default TaskDetailsModal;
+export default TasksModal;

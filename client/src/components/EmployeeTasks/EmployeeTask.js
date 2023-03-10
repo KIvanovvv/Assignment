@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../Utils/Button.js";
+import TasksModal from "../Utils/TasksModal.js";
 import classes from "./EmployeeTask.module.css";
 import Task from "./Task.js";
 
@@ -41,25 +42,32 @@ const DUMMY_EMP = {
 const EmployeeTask = () => {
   const [tasks, setTasks] = useState(DUMMY_EMP.tasks);
   const [user, setUser] = useState(DUMMY_EMP);
+  const [modalVisible, setModalVisible] = useState(false);
   const { userId } = useParams();
   //Fetch with UserId
   console.log(tasks);
+  const onAssignHandler = () => {
+    setModalVisible(true);
+  };
   return (
-    <div className={classes.container}>
-      <div className={classes.content}>
-        <div className={classes.headline}>
-          <p>
-            {user.fullName} is working on {tasks.length} tasks
-          </p>
+    <>
+      {modalVisible && <TasksModal setModalVisible={setModalVisible} />}
+      <div className={classes.container}>
+        <div className={classes.content}>
+          <div className={classes.headline}>
+            <p>
+              {user.fullName} is working on {tasks.length} tasks
+            </p>
+          </div>
+          <ul className={classes.list_container}>
+            {tasks.map((x) => (
+              <Task task={x} />
+            ))}
+          </ul>
         </div>
-        <ul className={classes.list_container}>
-          {tasks.map((x) => (
-            <Task task={x} />
-          ))}
-        </ul>
+        <Button onClick={onAssignHandler}>Assign Task</Button>
       </div>
-      <Button>Assign Task</Button>
-    </div>
+    </>
   );
 };
 
