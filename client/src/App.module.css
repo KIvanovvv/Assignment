@@ -12,7 +12,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 0;
   border: none;
   gap: 30px;
 }
@@ -26,6 +25,7 @@
   font-size: 28px;
   font-weight: bold;
   border-radius: 20px;
+  margin-top: 2%;
 }
 
 .headline_text {

@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import Button from "../Utils/Button.js";
+import TaskDetailsModal from "../Utils/TaskDetailsModal.js";
 import TaskList from "./TaskList.js";
 import classes from "./Tasks.module.css";
 
@@ -19,6 +21,7 @@ const DUMMY_TASKS = [
       },
     ],
     dueDate: "03/10/2023",
+    status: "In Progress",
     _id: "asdf123",
   },
   {
@@ -36,6 +39,7 @@ const DUMMY_TASKS = [
       },
     ],
     dueDate: "22/10/2023",
+    status: "Completed",
     _id: "asdf124",
   },
   {
@@ -43,22 +47,36 @@ const DUMMY_TASKS = [
     description: "Check and merge the new code",
     assignee: [],
     dueDate: "05/10/2023",
+    status: "Not Started",
     _id: "asdf125",
   },
 ];
 
 const Tasks = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [taskId, setTaskId] = useState();
+
   return (
-    <div className={classes.container}>
-      <div className={classes.content}>
-        <ul className={classes.ul}>
-          {DUMMY_TASKS.map((x) => (
-            <TaskList key={x._id} task={x} />
-          ))}
-        </ul>
+    <>
+      {modalVisible && (
+        <TaskDetailsModal setModalVisible={setModalVisible} taskId={taskId} />
+      )}
+      <div className={classes.container}>
+        <div className={classes.content}>
+          <ul className={classes.ul}>
+            {DUMMY_TASKS.map((x) => (
+              <TaskList
+                key={x._id}
+                task={x}
+                setModalVisible={setModalVisible}
+                setTaskId={setTaskId}
+              />
+            ))}
+          </ul>
+        </div>
+        <Button>Add Task</Button>
       </div>
-      <Button>Add Task</Button>
-    </div>
+    </>
   );
 };
 

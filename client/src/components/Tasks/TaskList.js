@@ -1,7 +1,26 @@
+import { useState } from "react";
 import Button from "../Utils/Button.js";
 import classes from "./TaskList.module.css";
 
-const TaskList = ({ task }) => {
+const TaskList = ({ task, setModalVisible, setTaskId }) => {
+  const [removeActive, setRemoveActive] = useState(false);
+  let statusStyle;
+  switch (task.status) {
+    case "Not Started":
+      statusStyle = classes.status_notstarted;
+      break;
+    case "In Progress":
+      statusStyle = classes.status_inprogress;
+      break;
+    case "Completed":
+      statusStyle = classes.status_completed;
+      break;
+  }
+  const detailsHandler = () => {
+    setModalVisible(true);
+    setTaskId(task._id);
+  };
+
   return (
     <li className={classes.list}>
       <div className={classes.headline}>
@@ -13,12 +32,38 @@ const TaskList = ({ task }) => {
           <p>
             Employees working on task <span>{task.assignee.length}</span>
           </p>
-          <Button className={classes.btn}>Details</Button>
+          <Button className={classes.btn} onClick={detailsHandler}>
+            Details
+          </Button>
         </div>
 
         <p className={classes.date}>
           Has to be finished before: {task.dueDate}
         </p>
+        <div className={statusStyle}>
+          <p>Status: {task.status}</p>
+        </div>
+        <Button
+          className={classes.btn}
+          onClick={() => setRemoveActive(true)}
+          disabled={removeActive}
+        >
+          Remove
+        </Button>
+        {removeActive && (
+          <div className={classes.delete_wrapper}>
+            <p>Are you sure ?</p>
+            <div className={classes.action_delete}>
+              <Button className={classes.btn_yes}>Yes</Button>
+              <Button
+                className={classes.btn_no}
+                onClick={() => setRemoveActive(false)}
+              >
+                No
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </li>
   );

@@ -9,7 +9,23 @@ const DUMMY_EMPLOYEES = [
     phoneNumber: "089999999",
     birth: "25/12/1990",
     salary: "2400",
-    tasks: "2",
+    tasks: [
+      {
+        title: "Merging",
+        description: "Check and merge the new code",
+        dueDate: "05/10/2023",
+        status: "Not Started",
+        _id: "asdf125",
+      },
+      {
+        title: "Fixing bug",
+        description:
+          "There is a bug reported on user trying to log in with Safari Browser",
+        dueDate: "03/10/2023",
+        status: "In Progress",
+        _id: "asdf123",
+      },
+    ],
     _id: "asd123",
   },
   {
@@ -18,7 +34,7 @@ const DUMMY_EMPLOYEES = [
     phoneNumber: "088888888",
     birth: "24/12/1992",
     salary: "2600",
-    tasks: "1",
+    tasks: [],
     _id: "asd124",
   },
   {
@@ -27,7 +43,7 @@ const DUMMY_EMPLOYEES = [
     phoneNumber: "087777777",
     birth: "23/12/1993",
     salary: "3100",
-    tasks: "3",
+    tasks: [],
     _id: "asd125",
   },
   {
@@ -36,7 +52,7 @@ const DUMMY_EMPLOYEES = [
     phoneNumber: "087777777",
     birth: "23/12/1993",
     salary: "3100",
-    tasks: "0",
+    tasks: [],
     _id: "asd126",
   },
   {
@@ -45,7 +61,7 @@ const DUMMY_EMPLOYEES = [
     phoneNumber: "087777777",
     birth: "23/12/1993",
     salary: "3100",
-    tasks: "4",
+    tasks: [],
     _id: "asd127",
   },
   {
@@ -54,7 +70,7 @@ const DUMMY_EMPLOYEES = [
     phoneNumber: "087777777",
     birth: "23/12/1993",
     salary: "3100",
-    tasks: "2",
+    tasks: [],
     _id: "asd128",
   },
 ];

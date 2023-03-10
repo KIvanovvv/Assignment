@@ -41,3 +41,51 @@
 .btn {
   font-size: 14px;
 }
+.btn:disabled {
+  background-color: #0fa3b1;
+  cursor: default;
+}
+.btn_remove {
+  font-size: 14px;
+}
+.btn_remove:hover {
+  background-color: red;
+}
+
+.status_completed {
+  background-color: green;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.status_notstarted {
+  background-color: red;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.status_inprogress {
+  background-color: yellow;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.delete_wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  font-size: 20px;
+}
+.btn_yes,
+.btn_no {
+  font-size: 14px;
+}
+.btn_yes:hover {
+  background-color: red;
+}
+.btn_no:hover {
+  background-color: green;
+}
+.action_delete {
+  display: flex;
+  gap: 20px;
+}

@@ -42,11 +42,13 @@ const EmployeeList = ({ employee }) => {
           <span className={classes.tag}>Salary: </span>${employee.salary}
         </p>
         <p>
-          Working on {<span className={taskStyle}>{employee.tasks}</span>} tasks
+          Working on {<span className={taskStyle}>{employee.tasks.length}</span>} tasks
         </p>
       </div>
       <div className={classes.action}>
-        <ButtonLink className={classes.btn}>Edit</ButtonLink>
+        <ButtonLink to={`/edit/${employee._id}`} className={classes.btn}>
+          Edit
+        </ButtonLink>
         <ButtonLink to={`/tasks/${employee._id}`} className={classes.btn}>
           Tasks
         </ButtonLink>
