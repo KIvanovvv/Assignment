@@ -18,6 +18,21 @@
   height: 100%;
   background-color: #d9e5d6;
 }
+.headline {
+  background-color: #d9e5d6;
+  color: #f7a072;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: default;
+}
+.btn {
+  display: flex;
+  align-items: center;
+}
 
 .ul {
   display: flex;

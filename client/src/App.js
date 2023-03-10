@@ -8,6 +8,7 @@ import Tasks from "./components/Tasks/Tasks.js";
 import Edit from "./components/Edit/Edit.js";
 import EmployeeTask from "./components/EmployeeTasks/EmployeeTask.js";
 import AddEmployee from "./components/AddEmployee/AddEmployee.js";
+import AddTask from "./components/AddTask/AddTask.js";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/employees" element={<Employees />} />
         <Route path="/employees/add" element={<AddEmployee />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/tasks/add" element={<AddTask />} />
         <Route path="/tasks/:userId" element={<EmployeeTask />} />
         <Route path="/edit/:userId" element={<Edit />} />
         <Route path="*" element={<p>Not Found 404</p>} />

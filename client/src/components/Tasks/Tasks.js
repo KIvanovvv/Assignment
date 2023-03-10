@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import Button from "../Utils/Button.js";
+import { useState } from "react";
+import ButtonLink from "../Utils/ButtonLink.js";
 import TaskDetailsModal from "../Utils/TaskDetailsModal.js";
 import TaskList from "./TaskList.js";
 import classes from "./Tasks.module.css";
@@ -62,6 +62,9 @@ const Tasks = () => {
         <TaskDetailsModal setModalVisible={setModalVisible} taskId={taskId} />
       )}
       <div className={classes.container}>
+        <div className={classes.headline}>
+          <p>All Tasks</p>
+        </div>
         <div className={classes.content}>
           <ul className={classes.ul}>
             {DUMMY_TASKS.map((x) => (
@@ -74,7 +77,9 @@ const Tasks = () => {
             ))}
           </ul>
         </div>
-        <Button>Add Task</Button>
+        <ButtonLink to={"/tasks/add"} className={classes.btn}>
+          Add Task
+        </ButtonLink>
       </div>
     </>
   );

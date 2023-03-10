@@ -35,6 +35,9 @@ const Edit = () => {
   console.log(user);
   return (
     <div className={classes.container}>
+      <div className={classes.headline}>
+        <p>Edit employee data</p>
+      </div>
       <div className={classes.content}>
         <div className={classes.name_wrapper}>
           <p className={classes.tag}>Name </p>

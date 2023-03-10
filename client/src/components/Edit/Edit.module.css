@@ -20,6 +20,17 @@
   padding: 20px 0;
   gap: 26px;
 }
+.headline {
+  background-color: #d9e5d6;
+  color: #f7a072;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: default;
+}
 
 .action {
   display: flex;
@@ -28,6 +39,8 @@
 .btn_save,
 .btn_remove {
   font-size: 18px;
+  display: flex;
+  align-items: center;
 }
 .btn_remove:hover {
   background-color: red;
