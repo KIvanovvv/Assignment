@@ -1,6 +1,4 @@
 import classes from "./Home.module.css";
-const welcomeText =
-  "This project is specifically build for Prime Holding Internship 2023.1, by Krasimir Ivanov. I hope it meet's all assigned criterias";
 
 const Home = () => {
   return (
@@ -12,8 +10,7 @@ const Home = () => {
           <span className={classes.first}> Prime </span>
           <span className={classes.second}>Holding </span>
           Internship 2023.1, by{" "}
-          <span className={classes.name}> Krasimir Ivanov </span>. I hope it
-          meet's all assigned criterias
+          <span className={classes.name}> Krasimir Ivanov </span>.
         </p>
       </div>
     </div>
