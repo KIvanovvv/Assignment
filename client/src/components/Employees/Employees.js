@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { getEmployees } from "../../services/employeeServices.js";
+
 import ButtonLink from "../Utils/ButtonLink.js";
 import EmployeeList from "./EmployeeList.js";
 import classes from "./Employees.module.css";
@@ -76,14 +79,31 @@ const DUMMY_EMPLOYEES = [
 ];
 
 const Employees = () => {
+  const [employees, setEmployees] = useState([]);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    (async function fetchEmployees() {
+      setEmployees(await getEmployees());
+      setHasLoaded(true);
+    })();
+  }, []);
+
   return (
     <div className={classes.container}>
       <div className={classes.content}>
-        <ul className={classes.ul}>
-          {DUMMY_EMPLOYEES.map((x) => (
-            <EmployeeList key={x._id} employee={x} />
-          ))}
-        </ul>
+        {hasLoaded && (
+          <ul className={classes.ul}>
+            {employees.reverse().map((x) => (
+              <EmployeeList key={x._id} employee={x} />
+            ))}
+          </ul>
+        )}
+        {!hasLoaded && (
+          <div>
+            <p>Loading ...</p>
+          </div>
+        )}
       </div>
       <ButtonLink to={"/employees/add"}>Add Employee</ButtonLink>
     </div>
