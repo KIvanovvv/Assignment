@@ -1,44 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
+  deleteEmployee,
   getEmployeeById,
   updateEmployee,
 } from "../../services/employeeServices.js";
 import Button from "../Utils/Button.js";
 import classes from "./Edit.module.css";
 
-const DUMMY_EMP = {
-  fullName: "John Doe",
-  email: "john@doe.com",
-  phoneNumber: "089999999",
-  birth: "25/12/1990",
-  salary: "2400",
-  tasks: [
-    {
-      title: "Merging",
-      description: "Check and merge the new code",
-      dueDate: "05/10/2023",
-      status: "In Progress",
-      _id: "asdf125",
-    },
-    {
-      title: "Fixing bug",
-      description:
-        "There is a bug reported on employee trying to log in with Safari Browser",
-      dueDate: "03/10/2023",
-      status: "In Progress",
-      _id: "asdf123",
-    },
-  ],
-  _id: "asd123",
-};
-
 const Edit = () => {
   const { employeeId } = useParams();
   const [employee, setEmployee] = useState({});
   const [hasLoaded, setHasLoaded] = useState(false);
   const [updating, setUpdating] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState(null);
+  const [removeActive, setRemoveActive] = useState(false);
   const navigate = useNavigate();
 
   const emailPattern = /^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -51,6 +28,7 @@ const Edit = () => {
       setHasLoaded(true);
     })();
   }, []);
+
   const onSaveHandler = async () => {
     if (!employee.fullName.trim()) {
       setError(`Name is required`);
@@ -75,6 +53,16 @@ const Edit = () => {
     setUpdating(true);
     await updateEmployee(employee);
     setUpdating(false);
+    navigate("/employees");
+  };
+
+  const onRemoveHandler = async () => {
+    setRemoveActive(true);
+  };
+  const onDeleteHandler = async () => {
+    setDeleting(true);
+    await deleteEmployee(employee._id);
+    setDeleting(false);
     navigate("/employees");
   };
   return (
@@ -152,12 +140,32 @@ const Edit = () => {
               />
             </div>
           </div>
-          <div className={classes.action}>
-            <Button className={classes.btn_save} onClick={onSaveHandler}>
-              Save
-            </Button>
-            <Button className={classes.btn_remove}>Remove</Button>
-          </div>
+          {!removeActive && (
+            <div className={classes.action}>
+              <Button className={classes.btn_save} onClick={onSaveHandler}>
+                Save
+              </Button>
+              <Button className={classes.btn_remove} onClick={onRemoveHandler}>
+                Remove
+              </Button>
+            </div>
+          )}
+          {removeActive && (
+            <div className={classes.confirm}>
+              <p>Are you sure you want to delete this employee ?</p>
+              <div className={classes.confirm_action}>
+                <Button className={classes.btn_yes} onClick={onDeleteHandler}>
+                  Yes
+                </Button>
+                <Button
+                  className={classes.btn_no}
+                  onClick={() => setRemoveActive(false)}
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          )}
         </>
       )}
       {!hasLoaded && (

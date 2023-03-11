@@ -65,3 +65,15 @@ export async function updateEmployee(data) {
     throw new Error(err.message);
   }
 }
+export async function deleteEmployee(id) {
+  try {
+    const response = await fetch(`${host}/employees/delete/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

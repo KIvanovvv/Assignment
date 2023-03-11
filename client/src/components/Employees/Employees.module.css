@@ -8,7 +8,7 @@
   height: 450px;
   padding: 20px;
   border-radius: 20px;
-  gap: 20px;
+  gap: 10px;
 }
 
 .content {
@@ -24,4 +24,19 @@
   overflow: auto;
   padding: 10px;
   gap: 20px;
+}
+.headline {
+  background-color: #d9e5d6;
+  color: #f7a072;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: default;
+}
+.btn_add {
+  display: flex;
+  align-items: center;
 }

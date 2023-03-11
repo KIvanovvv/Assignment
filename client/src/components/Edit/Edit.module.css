@@ -7,6 +7,7 @@
   width: 600px;
   height: 480px;
   padding: 20px;
+
   border-radius: 20px;
   gap: 10px;
 }
@@ -15,7 +16,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 80%;
   background-color: #0fa3b1;
   padding: 20px 0;
   gap: 26px;
@@ -79,4 +80,29 @@
   align-items: center;
   padding: 5px 10px;
   border-radius: 10px;
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+  color: red;
+  font-weight: bold;
+}
+.confirm_action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+.btn_yes,
+.btn_no {
+  font-size: 16px;
+}
+.btn_yes:hover {
+  background-color: red;
+}
+.btn_no:hover {
+  background-color: green;
 }

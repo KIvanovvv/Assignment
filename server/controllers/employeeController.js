@@ -3,6 +3,7 @@ const {
   getAllEmployees,
   getEmployeeById,
   updateEmployee,
+  deleteEmployee,
 } = require("../services/employeeServices.js");
 
 const employeeController = require("express").Router();
@@ -27,6 +28,11 @@ employeeController.put("/update", async (req, res) => {
   const data = req.body;
   const updatedEmployee = await updateEmployee(data);
   res.status(200).json(updatedEmployee);
+});
+
+employeeController.delete("/delete/:id", async (req, res) => {
+  await deleteEmployee(req.params.id);
+  res.status(204).end();
 });
 
 module.exports = employeeController;

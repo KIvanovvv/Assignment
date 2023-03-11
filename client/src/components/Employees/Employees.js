@@ -91,6 +91,9 @@ const Employees = () => {
 
   return (
     <div className={classes.container}>
+      <div className={classes.headline}>
+        <p>All Employees</p>
+      </div>
       <div className={classes.content}>
         {hasLoaded && (
           <ul className={classes.ul}>
@@ -105,7 +108,9 @@ const Employees = () => {
           </div>
         )}
       </div>
-      <ButtonLink to={"/employees/add"}>Add Employee</ButtonLink>
+      <ButtonLink to={"/employees/add"} className={classes.btn_add}>
+        Add Employee
+      </ButtonLink>
     </div>
   );
 };

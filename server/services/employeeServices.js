@@ -25,9 +25,16 @@ async function updateEmployee(data) {
   return employee;
 }
 
+async function deleteEmployee(id) {
+  const filter = {_id:id };
+  await Employee.findOneAndDelete(filter)
+
+}
+
 module.exports = {
   addEmployee,
   getAllEmployees,
   getEmployeeById,
   updateEmployee,
+  deleteEmployee
 };
