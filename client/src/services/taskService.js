@@ -77,3 +77,16 @@ export async function updateTask(data) {
     throw new Error(err.message);
   }
 }
+
+export async function deleteTask(id) {
+  try {
+    const response = await fetch(`${host}/tasks/delete/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

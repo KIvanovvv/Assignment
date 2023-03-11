@@ -24,16 +24,21 @@ async function updateTaskStatus(id) {
 }
 
 async function updateTask(data) {
-  const filter ={_id:data._id}
-  const task = await Task.findByIdAndUpdate(filter,data,{
-    new:true
-  })
+  const filter = { _id: data._id };
+  const task = await Task.findByIdAndUpdate(filter, data, {
+    new: true,
+  });
   return task;
 }
+async function deleteTask(id) {
+  await Task.findByIdAndDelete(id);
+}
+
 module.exports = {
   createTask,
   getAllTasks,
   updateTaskStatus,
   getTasksById,
-  updateTask
+  updateTask,
+  deleteTask,
 };

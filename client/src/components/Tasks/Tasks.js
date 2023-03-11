@@ -60,13 +60,14 @@ const Tasks = () => {
   const [taskId, setTaskId] = useState();
   //
   const [tasks, setTasks] = useState([]);
+  const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
     (async function fetchTasks() {
       setTasks(await getTasks());
       setHasLoaded(true);
     })();
-  }, []);
+  }, [updated]);
   return (
     <>
       {modalVisible && (
@@ -85,6 +86,7 @@ const Tasks = () => {
                   task={x}
                   setModalVisible={setModalVisible}
                   setTaskId={setTaskId}
+                  setUpdated={setUpdated}
                 />
               ))}
             </ul>

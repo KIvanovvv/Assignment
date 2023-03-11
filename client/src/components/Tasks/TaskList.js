@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { deleteTask } from "../../services/taskService.js";
 import Button from "../Utils/Button.js";
 import ButtonLink from "../Utils/ButtonLink.js";
 import classes from "./TaskList.module.css";
 
-const TaskList = ({ task, setModalVisible, setTaskId }) => {
+const TaskList = ({ task, setModalVisible, setTaskId, setUpdated }) => {
   const [removeActive, setRemoveActive] = useState(false);
   let statusStyle;
   switch (task.status) {
@@ -22,6 +23,10 @@ const TaskList = ({ task, setModalVisible, setTaskId }) => {
     setTaskId(task._id);
   };
 
+  const onDeleteHandler = async () => {
+    await deleteTask(task._id);
+    setUpdated((curr) => !curr);
+  };
   return (
     <li className={classes.list}>
       <div className={classes.headline}>
@@ -64,7 +69,9 @@ const TaskList = ({ task, setModalVisible, setTaskId }) => {
           <div className={classes.delete_wrapper}>
             <p>Are you sure ?</p>
             <div className={classes.action_delete}>
-              <Button className={classes.btn_yes}>Yes</Button>
+              <Button className={classes.btn_yes} onClick={onDeleteHandler}>
+                Yes
+              </Button>
               <Button
                 className={classes.btn_no}
                 onClick={() => setRemoveActive(false)}

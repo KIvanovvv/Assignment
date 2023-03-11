@@ -4,6 +4,7 @@ const {
   updateTaskStatus,
   getTasksById,
   updateTask,
+  deleteTask,
 } = require("../services/taskService.js");
 
 const taskController = require("express").Router();
@@ -53,5 +54,16 @@ taskController.put("/update", async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
+
+taskController.delete("/delete/:id", async (req, res) => {
+  try {
+    await deleteTask(req.params.id);
+    res.status(204).end();
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+
 
 module.exports = taskController;
