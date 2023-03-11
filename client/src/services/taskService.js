@@ -32,3 +32,16 @@ export async function getTasks() {
     throw new Error(err.message);
   }
 }
+
+export async function updateStatus(id) {
+  try {
+    const response = await fetch(`${host}/tasks/update/${id}`);
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

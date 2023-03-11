@@ -25,6 +25,7 @@
 
 .headline {
   display: flex;
+  align-items: center;
   color: #d9e5d6;
   background-color: #f7a072;
   justify-content: center;

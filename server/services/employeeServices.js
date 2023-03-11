@@ -9,7 +9,7 @@ async function addEmployee(data) {
 }
 
 async function getAllEmployees() {
-  const employees = await Employee.find({});
+  const employees = await Employee.find({}).populate("tasks");
   return employees;
 }
 
@@ -42,6 +42,12 @@ async function assignTask(data) {
   await task.save();
 }
 
+async function finishTask(employeeId) {
+  const employee = await Employee.findById(employeeId);
+  employee.finishedTasks++;
+  await employee.save();
+}
+
 module.exports = {
   addEmployee,
   getAllEmployees,
@@ -49,4 +55,5 @@ module.exports = {
   updateEmployee,
   deleteEmployee,
   assignTask,
+  finishTask,
 };

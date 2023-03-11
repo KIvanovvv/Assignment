@@ -1,14 +1,19 @@
-import Button from "../Utils/Button.js";
+import { useState } from "react";
+
 import ButtonLink from "../Utils/ButtonLink.js";
 import classes from "./EmployeeList.module.css";
 
 const EmployeeList = ({ employee }) => {
+  const [activeTasks, setActiveTasks] = useState(
+    employee.tasks.filter((task) => task.status !== "Completed").length
+  );
+
   let taskStyle;
-  if (Number(employee.tasks.length) <= 1) {
+  if (activeTasks <= 1) {
     taskStyle = classes.tag_tasks_light;
-  } else if (Number(employee.tasks.length) === 2) {
+  } else if (activeTasks === 2) {
     taskStyle = classes.tag_tasks_medium;
-  } else if (Number(employee.tasks.length) >= 3) {
+  } else if (activeTasks >= 3) {
     taskStyle = classes.tag_tasks_overwhelmed;
   }
   return (
@@ -42,8 +47,7 @@ const EmployeeList = ({ employee }) => {
           <span className={classes.tag}>Salary: </span>${employee.salary}
         </p>
         <p className={classes.tasks_counter}>
-          Working on{" "}
-          {<span className={taskStyle}>{employee.tasks.length}</span>} tasks
+          Working on {<span className={taskStyle}>{activeTasks}</span>} tasks
         </p>
       </div>
       <div className={classes.action}>

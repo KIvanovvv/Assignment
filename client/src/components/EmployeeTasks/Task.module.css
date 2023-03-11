@@ -67,10 +67,11 @@
 .btn:hover {
   background-color: green;
 }
-.completed {
-  font-size: 16px;
+.btn:disabled {
   background-color: green;
+  cursor: default;
 }
+
 .completed:disabled {
   cursor: default;
   background-color: green;

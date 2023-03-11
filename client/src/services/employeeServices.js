@@ -95,3 +95,14 @@ export async function assignTaskToEmployee(employeeId, taskId) {
     throw new Error(err.message);
   }
 }
+
+export async function finishTask(employeeId) {
+  try {
+    const response = await fetch(`${host}/employees/task/${employeeId}`);
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

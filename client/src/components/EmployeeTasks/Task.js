@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { finishTask } from "../../services/employeeServices.js";
+import { updateStatus } from "../../services/taskService.js";
 import Button from "../Utils/Button.js";
 import classes from "./Task.module.css";
 
 const Task = (props) => {
   const [task, setTask] = useState(props.task);
   const [taskStatus, setTaskStatus] = useState(task.status === "Completed");
-  const onCompleteHandler = () => {
-    //Fetch and update status
+
+  const onCompleteHandler = async () => {
+    await finishTask(props.employeeId);
+    setTask(await updateStatus(task._id));
+    setTaskStatus(true);
+    props.setUpdated((curr) => !curr);
   };
-  const statusStyle = taskStatus ? classes.completed : classes.btn;
+
   return (
     <li className={classes.list}>
       <div className={classes.title}>
@@ -30,7 +36,7 @@ const Task = (props) => {
         </div>
 
         <Button
-          className={statusStyle}
+          className={classes.btn}
           onClick={onCompleteHandler}
           disabled={taskStatus}
         >
