@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getEmployeeById } from "../../services/employeeServices.js";
 import Button from "../Utils/Button.js";
 import TasksModal from "../Utils/TasksModal.js";
 import classes from "./EmployeeTask.module.css";
@@ -40,12 +41,23 @@ const DUMMY_EMP = {
 };
 
 const EmployeeTask = () => {
-  const [tasks, setTasks] = useState(DUMMY_EMP.tasks);
-  const [user, setUser] = useState(DUMMY_EMP);
+  const [tasks, setTasks] = useState([]);
+  const [employee, setEmployee] = useState({});
+  const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const { employeeId } = useParams();
   //Fetch with UserId
   console.log(tasks);
+
+  useEffect(() => {
+    (async function getEmployeeData() {
+      setLoading(true);
+      const employeeData = await getEmployeeById(employeeId);
+      setEmployee(employeeData);
+      setTasks(employeeData.tasks);
+      setLoading(false);
+    })();
+  }, []);
   const onAssignHandler = () => {
     setModalVisible(true);
   };
@@ -56,14 +68,23 @@ const EmployeeTask = () => {
         <div className={classes.content}>
           <div className={classes.headline}>
             <p>
-              {user.fullName} is working on {tasks.length} tasks
+              {employee.fullName} is working on {tasks.length} tasks
             </p>
           </div>
-          <ul className={classes.list_container}>
-            {tasks.map((x) => (
-              <Task task={x} />
-            ))}
-          </ul>
+          {tasks.length > 0 && (
+            <ul className={classes.list_container}>
+              {tasks.map((x) => (
+                <Task task={x} />
+              ))}
+            </ul>
+          )}
+          {tasks.length === 0 && (
+            <div className={classes.no_tasks}>
+              <p>
+                {employee.fullName} is not working on any task at the moment.
+              </p>
+            </div>
+          )}
         </div>
         <Button onClick={onAssignHandler}>Assign Task</Button>
       </div>
