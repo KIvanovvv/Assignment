@@ -17,7 +17,7 @@ const AddEmployee = () => {
   const emailPattern = /^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   const yearPattern =
     /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$/gm;
-  //TODO validation, POST, redirect to Employees
+
   const onChangeNameHandler = (e) => {
     setFullName(e.target.value);
   };

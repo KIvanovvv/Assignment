@@ -72,3 +72,11 @@
   color: white;
   font-size: 20px;
 }
+.error {
+  background-color: #d9e5d6;
+  color: red;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+}

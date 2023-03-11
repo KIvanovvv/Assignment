@@ -43,7 +43,7 @@ const EmployeeTask = () => {
   const [tasks, setTasks] = useState(DUMMY_EMP.tasks);
   const [user, setUser] = useState(DUMMY_EMP);
   const [modalVisible, setModalVisible] = useState(false);
-  const { userId } = useParams();
+  const { employeeId } = useParams();
   //Fetch with UserId
   console.log(tasks);
   const onAssignHandler = () => {

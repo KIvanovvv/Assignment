@@ -25,8 +25,8 @@ function App() {
         <Route path="/employees/add" element={<AddEmployee />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/tasks/add" element={<AddTask />} />
-        <Route path="/tasks/:userId" element={<EmployeeTask />} />
-        <Route path="/edit/:userId" element={<Edit />} />
+        <Route path="/tasks/:employeeId" element={<EmployeeTask />} />
+        <Route path="/edit/:employeeId" element={<Edit />} />
         <Route path="*" element={<p>Not Found 404</p>} />
       </Routes>
     </div>

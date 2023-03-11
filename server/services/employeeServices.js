@@ -12,7 +12,22 @@ async function getAllEmployees() {
   return employees;
 }
 
+async function getEmployeeById(id) {
+  const employee = await Employee.findById(id);
+  return employee;
+}
+
+async function updateEmployee(data) {
+  const filter = { _id: data._id };
+  const employee = await Employee.findOneAndUpdate(filter, data, {
+    new: true,
+  });
+  return employee;
+}
+
 module.exports = {
   addEmployee,
   getAllEmployees,
+  getEmployeeById,
+  updateEmployee,
 };
