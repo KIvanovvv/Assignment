@@ -6,7 +6,7 @@ import {
   updateEmployee,
 } from "../../services/employeeServices.js";
 import Button from "../Utils/Button.js";
-import classes from "./Edit.module.css";
+import classes from "./EditEmployee.module.css";
 
 const Edit = () => {
   const { employeeId } = useParams();

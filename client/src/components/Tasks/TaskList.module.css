@@ -89,3 +89,7 @@
   display: flex;
   gap: 20px;
 }
+.action {
+  display: flex;
+  gap: 20px;
+}

@@ -32,10 +32,42 @@ export async function getTasks() {
     throw new Error(err.message);
   }
 }
+export async function getTasksById(id) {
+  try {
+    const response = await fetch(`${host}/tasks/${id}`);
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
 
 export async function updateStatus(id) {
   try {
     const response = await fetch(`${host}/tasks/update/${id}`);
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
+export async function updateTask(data) {
+  const taskData = data;
+  try {
+    const response = await fetch(`${host}/tasks/update`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskData),
+    });
     if (!response.ok) {
       throw new Error(`Something went wrong with request`);
     }

@@ -5,10 +5,11 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home.js";
 import Employees from "./components/Employees/Employees.js";
 import Tasks from "./components/Tasks/Tasks.js";
-import Edit from "./components/Edit/Edit.js";
+import EditEmployee from "./components/EditEmployee/EditEmployee.js";
 import EmployeeTask from "./components/EmployeeTasks/EmployeeTask.js";
 import AddEmployee from "./components/AddEmployee/AddEmployee.js";
 import AddTask from "./components/AddTask/AddTask.js";
+import EditTask from "./components/EditTask/EditTask.js";
 
 function App() {
   return (
@@ -25,8 +26,9 @@ function App() {
         <Route path="/employees/add" element={<AddEmployee />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/tasks/add" element={<AddTask />} />
+        <Route path="/tasks/edit/:taskId" element={<EditTask />} />
         <Route path="/tasks/:employeeId" element={<EmployeeTask />} />
-        <Route path="/edit/:employeeId" element={<Edit />} />
+        <Route path="/edit/:employeeId" element={<EditEmployee />} />
         <Route path="*" element={<p>Not Found 404</p>} />
       </Routes>
     </div>

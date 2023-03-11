@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../Utils/Button.js";
+import ButtonLink from "../Utils/ButtonLink.js";
 import classes from "./TaskList.module.css";
 
 const TaskList = ({ task, setModalVisible, setTaskId }) => {
@@ -43,13 +44,22 @@ const TaskList = ({ task, setModalVisible, setTaskId }) => {
         <div className={statusStyle}>
           <p>Status: {task.status}</p>
         </div>
-        <Button
-          className={classes.btn}
-          onClick={() => setRemoveActive(true)}
-          disabled={removeActive}
-        >
-          Remove
-        </Button>
+        <div className={classes.action}>
+          <Button
+            className={classes.btn}
+            onClick={() => setRemoveActive(true)}
+            disabled={removeActive}
+          >
+            Remove
+          </Button>
+          <ButtonLink
+            to={`/tasks/edit/${task._id}`}
+            className={classes.btn}
+            disabled={removeActive}
+          >
+            Edit
+          </ButtonLink>
+        </div>
         {removeActive && (
           <div className={classes.delete_wrapper}>
             <p>Are you sure ?</p>

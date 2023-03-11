@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f7a072;
+  width: 600px;
+  height: 480px;
+  padding: 20px;
+  border-radius: 20px;
+  gap: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #0fa3b1;
+  padding: 20px 0;
+  gap: 26px;
+}
+.headline {
+  background-color: #d9e5d6;
+  color: #f7a072;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: default;
+}
+
+.action {
+  display: flex;
+}
+.btn {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.title_wrapper,
+.description_wrapper,
+.duedate_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 20px;
+  background-color: #d9e5d6;
+  outline: none;
+  border: none;
+  width: 180px;
+}
+.textarea {
+  resize: none;
+  width: 400px;
+  height: 200px;
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 20px;
+  background-color: #d9e5d6;
+  outline: none;
+}
+
+.tag {
+  font-weight: bold;
+  color: white;
+  font-size: 20px;
+}
+
+.error {
+  background-color: #d9e5d6;
+  color: red;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
