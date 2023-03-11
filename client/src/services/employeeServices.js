@@ -77,3 +77,21 @@ export async function deleteEmployee(id) {
     throw new Error(err.message);
   }
 }
+
+export async function assignTaskToEmployee(employeeId, taskId) {
+  const data = { employeeId, taskId };
+  try {
+    const response = await fetch(`${host}/employees/assign`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

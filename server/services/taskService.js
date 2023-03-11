@@ -6,7 +6,11 @@ async function createTask(data) {
   });
   return newTask;
 }
-
+async function getAllTasks() {
+  const tasks = await Task.find({});
+  return tasks;
+}
 module.exports = {
-  createTask
+  createTask,
+  getAllTasks
 };

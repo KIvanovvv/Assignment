@@ -19,3 +19,16 @@ export async function createTask(data) {
     throw new Error(err.message);
   }
 }
+
+export async function getTasks() {
+  try {
+    const response = await fetch(`${host}/tasks`);
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

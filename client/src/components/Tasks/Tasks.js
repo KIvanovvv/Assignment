@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getTasks } from "../../services/taskService.js";
 import ButtonLink from "../Utils/ButtonLink.js";
 import TaskDetailsModal from "../Utils/TaskDetailsModal.js";
 import TaskList from "./TaskList.js";
@@ -54,8 +55,18 @@ const DUMMY_TASKS = [
 
 const Tasks = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
+  //for Modal
   const [taskId, setTaskId] = useState();
+  //
+  const [tasks, setTasks] = useState([]);
 
+  useEffect(() => {
+    (async function fetchTasks() {
+      setTasks(await getTasks());
+      setHasLoaded(true);
+    })();
+  }, []);
   return (
     <>
       {modalVisible && (
@@ -66,16 +77,23 @@ const Tasks = () => {
           <p>All Tasks</p>
         </div>
         <div className={classes.content}>
-          <ul className={classes.ul}>
-            {DUMMY_TASKS.map((x) => (
-              <TaskList
-                key={x._id}
-                task={x}
-                setModalVisible={setModalVisible}
-                setTaskId={setTaskId}
-              />
-            ))}
-          </ul>
+          {hasLoaded && (
+            <ul className={classes.ul}>
+              {tasks.reverse().map((x) => (
+                <TaskList
+                  key={x._id}
+                  task={x}
+                  setModalVisible={setModalVisible}
+                  setTaskId={setTaskId}
+                />
+              ))}
+            </ul>
+          )}
+          {!hasLoaded && (
+            <div>
+              <p>Loading ...</p>
+            </div>
+          )}
         </div>
         <ButtonLink to={"/tasks/add"} className={classes.btn}>
           Add Task

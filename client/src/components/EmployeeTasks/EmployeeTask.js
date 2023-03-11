@@ -45,6 +45,7 @@ const EmployeeTask = () => {
   const [employee, setEmployee] = useState({});
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [updated, setUpdated] = useState(false);
   const { employeeId } = useParams();
   //Fetch with UserId
   console.log(tasks);
@@ -57,13 +58,19 @@ const EmployeeTask = () => {
       setTasks(employeeData.tasks);
       setLoading(false);
     })();
-  }, []);
+  }, [updated]);
   const onAssignHandler = () => {
     setModalVisible(true);
   };
   return (
     <>
-      {modalVisible && <TasksModal setModalVisible={setModalVisible} />}
+      {modalVisible && (
+        <TasksModal
+          setModalVisible={setModalVisible}
+          employeeId={employee._id}
+          setUpdated={setUpdated}
+        />
+      )}
       <div className={classes.container}>
         <div className={classes.content}>
           <div className={classes.headline}>
@@ -74,7 +81,7 @@ const EmployeeTask = () => {
           {tasks.length > 0 && (
             <ul className={classes.list_container}>
               {tasks.map((x) => (
-                <Task task={x} />
+                <Task task={x} key={x._id} />
               ))}
             </ul>
           )}

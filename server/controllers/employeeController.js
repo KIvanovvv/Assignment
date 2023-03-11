@@ -4,6 +4,7 @@ const {
   getEmployeeById,
   updateEmployee,
   deleteEmployee,
+  assignTask,
 } = require("../services/employeeServices.js");
 
 const employeeController = require("express").Router();
@@ -50,6 +51,16 @@ employeeController.delete("/delete/:id", async (req, res) => {
   try {
     await deleteEmployee(req.params.id);
     res.status(204).end();
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+employeeController.post("/assign", async (req, res) => {
+  try {
+    const data = req.body;
+     await assignTask(data);
+    res.status(200).end();
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

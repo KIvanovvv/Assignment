@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getTasks } from "../../services/taskService.js";
+import TaskModalList from "./TaskModalList.js";
 import classes from "./TasksModal.module.css";
 
-const TasksModal = ({ setModalVisible }) => {
+const TasksModal = ({ setModalVisible, employeeId,setUpdated }) => {
   const [tasks, setTasks] = useState([]);
-  //Fetch for all tasks
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    (async function fetchTasks() {
+      setTasks(await getTasks());
+      setHasLoaded(true);
+    })();
+  }, []);
+
   return (
     <div className={classes.wrapper}>
       <div
@@ -13,8 +23,18 @@ const TasksModal = ({ setModalVisible }) => {
       <div className={classes.container}>
         <div className={classes.headline}>
           <p>Available tasks</p>
-          <ul></ul>
         </div>
+        <ul className={classes.list_ul}>
+          {tasks.reverse().map((x) => (
+            <TaskModalList
+              task={x}
+              key={x._id}
+              employeeId={employeeId}
+              setModalVisible={setModalVisible}
+              setUpdated={setUpdated}
+            />
+          ))}
+        </ul>
       </div>
     </div>
   );

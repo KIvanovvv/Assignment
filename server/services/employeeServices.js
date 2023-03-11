@@ -1,4 +1,5 @@
 const Employee = require("../models/Employee.js");
+const Task = require("../models/Task.js");
 
 async function addEmployee(data) {
   const newEmployee = await Employee.create({
@@ -13,7 +14,7 @@ async function getAllEmployees() {
 }
 
 async function getEmployeeById(id) {
-  const employee = await Employee.findById(id);
+  const employee = await Employee.findById(id).populate("tasks");
   return employee;
 }
 
@@ -26,9 +27,19 @@ async function updateEmployee(data) {
 }
 
 async function deleteEmployee(id) {
-  const filter = {_id:id };
-  await Employee.findOneAndDelete(filter)
+  const filter = { _id: id };
+  await Employee.findOneAndDelete(filter);
+}
 
+async function assignTask(data) {
+  const { employeeId, taskId } = data;
+  const employee = await Employee.findById(employeeId);
+  const task = await Task.findById(taskId);
+  employee.tasks.push(task);
+  await employee.save();
+  task.assignee.push(employee);
+  task.status = "In Progress";
+  await task.save();
 }
 
 module.exports = {
@@ -36,5 +47,6 @@ module.exports = {
   getAllEmployees,
   getEmployeeById,
   updateEmployee,
-  deleteEmployee
+  deleteEmployee,
+  assignTask,
 };
