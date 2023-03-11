@@ -41,3 +41,14 @@
   padding: 10px;
   gap: 20px;
 }
+.default {
+  display: flex;
+  background-color: #f7a072;
+  justify-content: center;
+  align-self: center;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  color: #d9e5d6;
+}

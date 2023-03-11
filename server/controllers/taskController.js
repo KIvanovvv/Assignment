@@ -5,6 +5,7 @@ const {
   getTasksById,
   updateTask,
   deleteTask,
+  getEmployeesOnTask,
 } = require("../services/taskService.js");
 
 const taskController = require("express").Router();
@@ -64,6 +65,13 @@ taskController.delete("/delete/:id", async (req, res) => {
   }
 });
 
-
+taskController.get("/:id/employees", async (req, res) => {
+  try {
+    const task = await getEmployeesOnTask(req.params.id);
+    res.status(200).json(task);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
 
 module.exports = taskController;

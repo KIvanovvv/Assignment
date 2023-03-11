@@ -90,3 +90,16 @@ export async function deleteTask(id) {
     throw new Error(err.message);
   }
 }
+
+export async function getEmployeesOnTask(id) {
+  try {
+    const response = await fetch(`${host}/tasks/${id}/employees`);
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

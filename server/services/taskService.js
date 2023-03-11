@@ -34,6 +34,11 @@ async function deleteTask(id) {
   await Task.findByIdAndDelete(id);
 }
 
+async function getEmployeesOnTask(taskId) {
+  const task = await Task.findById(taskId).populate("assignee");
+  return task.assignee;
+}
+
 module.exports = {
   createTask,
   getAllTasks,
@@ -41,4 +46,5 @@ module.exports = {
   getTasksById,
   updateTask,
   deleteTask,
+  getEmployeesOnTask,
 };

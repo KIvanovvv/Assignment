@@ -80,15 +80,23 @@ const Tasks = () => {
         <div className={classes.content}>
           {hasLoaded && (
             <ul className={classes.ul}>
-              {tasks.reverse().map((x) => (
-                <TaskList
-                  key={x._id}
-                  task={x}
-                  setModalVisible={setModalVisible}
-                  setTaskId={setTaskId}
-                  setUpdated={setUpdated}
-                />
-              ))}
+              {tasks.length > 0 &&
+                tasks
+                  .reverse()
+                  .map((x) => (
+                    <TaskList
+                      key={x._id}
+                      task={x}
+                      setModalVisible={setModalVisible}
+                      setTaskId={setTaskId}
+                      setUpdated={setUpdated}
+                    />
+                  ))}
+              {tasks.length === 0 && (
+                <div className={classes.default}>
+                  <p>There aren't any tasks yet.</p>
+                </div>
+              )}
             </ul>
           )}
           {!hasLoaded && (

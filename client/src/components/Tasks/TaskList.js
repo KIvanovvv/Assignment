@@ -6,6 +6,7 @@ import classes from "./TaskList.module.css";
 
 const TaskList = ({ task, setModalVisible, setTaskId, setUpdated }) => {
   const [removeActive, setRemoveActive] = useState(false);
+
   let statusStyle;
   switch (task.status) {
     case "Not Started":
@@ -57,13 +58,11 @@ const TaskList = ({ task, setModalVisible, setTaskId, setUpdated }) => {
           >
             Remove
           </Button>
-          <ButtonLink
-            to={`/tasks/edit/${task._id}`}
-            className={classes.btn}
-            disabled={removeActive}
-          >
-            Edit
-          </ButtonLink>
+          {task.status !== "Completed" && (
+            <ButtonLink to={`/tasks/edit/${task._id}`} className={classes.btn}>
+              Edit
+            </ButtonLink>
+          )}
         </div>
         {removeActive && (
           <div className={classes.delete_wrapper}>
