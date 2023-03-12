@@ -5,8 +5,9 @@ const Header = () => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.content}>
-        <ButtonLink to={"/employees"}>Employees</ButtonLink>
-        <ButtonLink to={"/tasks"}>Tasks</ButtonLink>
+        <ButtonLink to={"/employees"} className={classes.link}>Employees</ButtonLink>
+        <ButtonLink to={"/tasks"} className={classes.link}>Tasks</ButtonLink>
+        <ButtonLink to={"/statistic"} className={classes.link}>Statistic</ButtonLink>
       </div>
     </div>
   );

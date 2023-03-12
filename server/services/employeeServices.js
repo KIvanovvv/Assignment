@@ -48,6 +48,14 @@ async function finishTask(employeeId) {
   await employee.save();
 }
 
+async function getTop5() {
+  const employees = await Employee.find({})
+    .sort({ finishedTasks: -1 })
+    .limit(5);
+
+  return employees;
+}
+
 module.exports = {
   addEmployee,
   getAllEmployees,
@@ -56,4 +64,5 @@ module.exports = {
   deleteEmployee,
   assignTask,
   finishTask,
+  getTop5,
 };

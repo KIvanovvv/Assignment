@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTasks } from "../../services/taskService.js";
 import ButtonLink from "../Utils/ButtonLink.js";
+import Spinner from "../Utils/Spinner.js";
 import TaskDetailsModal from "../Utils/TaskDetailsModal.js";
 import TaskList from "./TaskList.js";
 import classes from "./Tasks.module.css";
@@ -100,8 +101,8 @@ const Tasks = () => {
             </ul>
           )}
           {!hasLoaded && (
-            <div>
-              <p>Loading ...</p>
+            <div className={classes.spinner}>
+              <Spinner h={350} w={350} />
             </div>
           )}
         </div>

@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { getEmployees } from "../../services/employeeServices.js";
+import { getTop5 } from "../../services/employeeServices.js";
 import Spinner from "../Utils/Spinner.js";
-import ButtonLink from "../Utils/ButtonLink.js";
-import EmployeeList from "./EmployeeList.js";
-import classes from "./Employees.module.css";
+import List from "./List.js";
+import classes from "./Statistic.module.css";
 
-const Employees = () => {
+const Statistic = () => {
   const [employees, setEmployees] = useState([]);
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
     (async function fetchEmployees() {
-      setEmployees(await getEmployees());
+      setEmployees(await getTop5());
       setHasLoaded(true);
     })();
   }, []);
@@ -19,13 +18,13 @@ const Employees = () => {
   return (
     <div className={classes.container}>
       <div className={classes.headline}>
-        <p>All Employees</p>
+        <p>Top 5 Employees</p>
       </div>
       <div className={classes.content}>
         {hasLoaded && (
           <ul className={classes.ul}>
-            {employees.reverse().map((x) => (
-              <EmployeeList key={x._id} employee={x} />
+            {employees.map((x) => (
+              <List key={x._id} employee={x} />
             ))}
           </ul>
         )}
@@ -35,11 +34,8 @@ const Employees = () => {
           </div>
         )}
       </div>
-      <ButtonLink to={"/employees/add"} className={classes.btn_add}>
-        Add Employee
-      </ButtonLink>
     </div>
   );
 };
 
-export default Employees;
+export default Statistic;

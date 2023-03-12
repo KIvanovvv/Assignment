@@ -1,0 +1,43 @@
+.list {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #0fa3b1;
+  padding: 10px;
+  overflow: visible;
+}
+
+.name_container {
+  font-size: 22px;
+}
+.head_name {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+.tag {
+  color: white;
+}
+
+.contacts {
+  font-size: 22px;
+}
+.salary {
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.achievement {
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tasks {
+  color: #f7a072;
+  font-size: 26px;
+  font-weight: bold;
+}

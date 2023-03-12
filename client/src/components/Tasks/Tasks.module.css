@@ -52,3 +52,8 @@
   border-radius: 20px;
   color: #d9e5d6;
 }
+
+.spinner {
+  align-self: center;
+  justify-self: center;
+}

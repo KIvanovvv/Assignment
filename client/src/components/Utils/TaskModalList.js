@@ -6,10 +6,14 @@ import classes from "./TaskModalList.module.css";
 const TaskModalList = ({ task, employeeId, setModalVisible, setUpdated }) => {
   const [loading, setLoading] = useState(false);
   const [alreadyAssigned, setAlreadyAssigned] = useState(false);
+  const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
     if (task.assignee.includes(employeeId)) {
       setAlreadyAssigned(true);
+    }
+    if (task.status === "Completed") {
+      setCompleted(true);
     }
   }, []);
 
@@ -34,9 +38,15 @@ const TaskModalList = ({ task, employeeId, setModalVisible, setUpdated }) => {
       <Button
         className={classes.btn_assign}
         onClick={onAssignHandler}
-        disabled={alreadyAssigned}
+        disabled={alreadyAssigned || completed}
       >
-        {alreadyAssigned ? "Assigned" : "Assign"}
+        {alreadyAssigned
+          ? completed
+            ? "Completed"
+            : "Assigned"
+          : completed
+          ? "Completed"
+          : "Assign"}
       </Button>
     </li>
   );

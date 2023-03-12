@@ -1,3 +1,4 @@
+const Employee = require("../models/Employee.js");
 const {
   addEmployee,
   getAllEmployees,
@@ -6,6 +7,7 @@ const {
   deleteEmployee,
   assignTask,
   finishTask,
+  getTop5,
 } = require("../services/employeeServices.js");
 
 const employeeController = require("express").Router();
@@ -69,8 +71,17 @@ employeeController.post("/assign", async (req, res) => {
 
 employeeController.get("/task/:id", async (req, res) => {
   try {
-   await finishTask(req.params.id)
+    await finishTask(req.params.id);
     res.status(200).end();
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+employeeController.get("/stats/five", async (req, res) => {
+  try {
+    const employees = await getTop5();
+    res.status(200).json(employees);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

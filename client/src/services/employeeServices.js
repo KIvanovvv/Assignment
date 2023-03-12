@@ -106,3 +106,16 @@ export async function finishTask(employeeId) {
     throw new Error(err.message);
   }
 }
+
+export async function getTop5() {
+  try {
+    const response = await fetch(`${host}/employees/stats/five`);
+    if (!response.ok) {
+      throw new Error(`Something went wrong with request`);
+    }
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}

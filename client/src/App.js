@@ -10,6 +10,7 @@ import EmployeeTask from "./components/EmployeeTasks/EmployeeTask.js";
 import AddEmployee from "./components/AddEmployee/AddEmployee.js";
 import AddTask from "./components/AddTask/AddTask.js";
 import EditTask from "./components/EditTask/EditTask.js";
+import Statistic from "./components/Statistic/Statistic.js";
 
 function App() {
   return (
@@ -29,7 +30,8 @@ function App() {
         <Route path="/tasks/edit/:taskId" element={<EditTask />} />
         <Route path="/tasks/:employeeId" element={<EmployeeTask />} />
         <Route path="/edit/:employeeId" element={<EditEmployee />} />
-        <Route path="*" element={<p>Not Found 404</p>} />
+        <Route path="/statistic" element={<Statistic />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );
