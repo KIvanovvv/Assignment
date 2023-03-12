@@ -71,6 +71,7 @@ const AddEmployee = () => {
           <input
             type="text"
             value={fullName}
+            placeholder="Jonas Smith..."
             className={classes.input}
             onChange={onChangeNameHandler}
             onClick={() => setError(null)}
@@ -81,6 +82,7 @@ const AddEmployee = () => {
           <input
             type="text"
             value={email}
+            placeholder="jonas@smith.com..."
             className={classes.input}
             onChange={onChangeEmailHandler}
             onClick={() => setError(null)}
@@ -91,6 +93,7 @@ const AddEmployee = () => {
           <input
             type="number"
             value={phoneNumber}
+            placeholder="08XXXXXXXX..."
             className={classes.input}
             onChange={onChangePhoneHandler}
             onClick={() => setError(null)}
@@ -100,6 +103,7 @@ const AddEmployee = () => {
           <p className={classes.tag}>Date of birth </p>
           <input
             type="text"
+            placeholder="DD/MM/YYYY"
             value={birth}
             className={classes.input}
             onChange={onChangeBirthHandler}

@@ -58,6 +58,7 @@ const AddTask = () => {
           <p className={classes.tag}>Title </p>
           <input
             type="text"
+            placeholder="Title..."
             value={title}
             className={classes.input}
             onChange={onChangeTitleHandler}
@@ -68,6 +69,7 @@ const AddTask = () => {
           <p className={classes.tag}>Description </p>
           <textarea
             type="text"
+            placeholder="Write task description ..."
             value={description}
             className={classes.textarea}
             onChange={onChangeDescriptionHandler}
@@ -79,6 +81,7 @@ const AddTask = () => {
           <input
             type="text"
             value={dueDate}
+            placeholder="DD/MM/YYYY"
             className={classes.input}
             onChange={onChangeDueDateHandler}
             onClick={() => setError(null)}
