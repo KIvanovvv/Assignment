@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { getEmployeesOnTask } from "../../services/taskService.js";
-import Button from "./Button.js";
 import classes from "./TaskDetailsModal.module.css";
 
 const TaskDetailsModal = ({ setModalVisible, taskId }) => {
   const [employees, setEmployees] = useState([]);
-  console.log(taskId);
-  //Fetch with taskId
+
   useEffect(() => {
     (async function fetchEmployees() {
       setEmployees(await getEmployeesOnTask(taskId));
